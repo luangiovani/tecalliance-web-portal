@@ -1,0 +1,22 @@
+<div class="login-container">
+    <form #emailForm="ngForm" (ngSubmit)="authenticate()">
+        <p-card header="Access Web Portal" subheader="TecAlliance - Programming Practice" styleClass="login-card">
+            <div class="field">
+                <label for="username">Username</label>
+                <p-inputGroup>
+                    <input type="email" id="username" name="email" pInputText [(ngModel)]="email" required email #emailInput="ngModel" />
+                    <p-button icon="pi pi-times" severity="secondary" (onClick)="clear()"></p-button>
+                </p-inputGroup>
+            </div>
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                <div *ngIf="emailInput.errors?.['required']">
+                    Email is required.
+                </div>
+            </div>
+           <div class="flex gap-3 mt-1">
+                <p-button label="Cancel" severity="secondary" class="w-full" styleClass="w-full" (onClick)="cancel()" />
+                <p-button label="Signin" type="submit" class="w-full" styleClass="w-full" [disabled]="emailForm.invalid"/>
+            </div>
+        </p-card>
+    </form>
+</div>

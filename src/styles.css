@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tfoot > tr > td,
+.p-datatable .p-datatable-tbody > tr > td
+{
+    border: 1px solid #6b72806e;
+}
+
+.strike {
+    text-decoration: line-through
+}
+
+.p-checkbox .p-checkbox-box {
+    border: 2px solid #135ecd;
+}
+
+.p-datatable .p-inputtext {
+    width: 100%;
+}

@@ -1,0 +1,38 @@
+<div class="card">
+    <p-toolbar styleClass="bg-gray-900 shadow-2"
+        [style]="{ 'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
+        <ng-template pTemplate="start">
+            <div class="flex align-items-center gap-2">
+                <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+                <span class="font-bold text-bluegray-50">
+                    Web Portal
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="center">
+            <div class="flex flex-wrap align-items-center gap-3">
+                <p-button label="Home" icon="pi pi-home"
+                    styleClass="p-link inline-flex justify-content-center align-items-center hover:bg-white-alpha-10"
+                    size="large"
+                    (onClick)="gotohome()" />
+                <p-button label="About" icon="pi pi-info-circle"
+                    styleClass="p-link inline-flex justify-content-center align-items-center hover:bg-white-alpha-10"
+                    size="large"
+                    (onClick)="gotoabout()" />
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex align-items-center gap-2">
+                <p-button label="{{username}}" icon="pi pi-user"
+                    styleClass="p-link inline-flex justify-content-center align-items-center hover:bg-white-alpha-10"
+                    size="large"
+                    (onClick)="seeprofile()" />
+                <p-button icon="pi pi-sign-out" 
+                    styleClass="p-link inline-flex justify-content-center align-items-center hover:bg-white-alpha-10"
+                    size="large" 
+                    (onClick)="signout();"/>
+            </div>
+        </ng-template>
+    </p-toolbar>
+</div>
+<app-user #userDetails [userModel]="userModel" />

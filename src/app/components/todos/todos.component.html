@@ -1,0 +1,113 @@
+<div class="flex flex-column md:flex-row gap-3 m-3">
+    <p-inputGroup>
+        <input type="text" pInputText placeholder="Type your to do task and hit save -> " [(ngModel)]="newTodo.title" maxlength="250"/>
+        <p-button label="Save" icon="pi pi-save" (onClick)="create()"></p-button>
+    </p-inputGroup>
+</div>
+<div class="flex-grow flex-column md:flex-row gap-3 m-3">
+    <p-table #dtTodos 
+        [value]="todoList" 
+        dataKey="id"
+        editMode="row"
+        [rows]="5" 
+        [rowsPerPageOptions]="[5, 10, 25, 50]" 
+        [paginator]="true"
+        [loading]="isLoading">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="completed" style="width: 6rem">
+                    Status <p-sortIcon field="completed" />
+                </th>
+                <th pSortableColumn="id" style="min-width: 6rem">
+                    Id <p-sortIcon field="id" />
+                </th>
+                <th pSortableColumn="title" style="min-width: 15rem">
+                    Title <p-sortIcon field="title" />
+                </th>
+                <th style="min-width: 6rem">
+                    Actions
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-todo let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="todo">
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-checkbox 
+                                [(ngModel)]="todo.completed" 
+                                [binary]="true"
+                                inputId="todo.completed" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            <p-checkbox 
+                                [(ngModel)]="todo.completed"
+                                [binary]="true"
+                                [disabled]="true" />
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td [ngClass]="{strike: todo.completed}">
+                    {{ todo.id }}
+                </td>
+                <td [ngClass]="{strike: todo.completed}">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="todo.title" maxlength="250"/>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ todo.title }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        @if(!editing) {
+                            <button 
+                                pButton 
+                                pRipple 
+                                type="button" 
+                                pInitEditableRow 
+                                icon="pi pi-pencil" 
+                                (click)="onRowEditInit(todo)" 
+                                class="p-button-rounded p-button-text">
+                            </button>
+                            <button 
+                                pButton 
+                                pRipple 
+                                type="button" 
+                                icon="pi pi-trash" 
+                                (click)="onRowDelete(todo)" 
+                                class="p-button-rounded p-button-text p-button-danger">
+                            </button>
+                        }
+                        @else {
+                            <button 
+                                pButton 
+                                pRipple 
+                                type="button" 
+                                pSaveEditableRow 
+                                icon="pi pi-check" 
+                                (click)="onRowEditSave(todo)" 
+                                class="p-button-rounded p-button-text p-button-success mr-2">
+                            </button>
+                            <button 
+                                pButton pRipple 
+                                type="button" 
+                                pCancelEditableRow 
+                                icon="pi pi-times" 
+                                (click)="onRowEditCancel(todo, ri)" 
+                                class="p-button-rounded p-button-text p-button-danger">
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">Nothing to display.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

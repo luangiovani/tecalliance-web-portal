@@ -1,0 +1,58 @@
+<p-dialog header="Profile Details" 
+    [modal]="true" 
+    [(visible)]="visible" 
+    [style]="{ width: '37.5rem' }">
+    <span class="p-text-secondary block mb-5">{{userModel.email}}</span>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="username" class="font-semibold w-6rem">Username</label>
+        <input pInputText id="username" class="flex-auto" [(ngModel)]="userModel.username" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="name" class="font-semibold w-6rem">Name</label>
+        <input pInputText id="name" class="flex-auto" [(ngModel)]="userModel.name" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="phone" class="font-semibold w-6rem">Phone</label>
+        <input pInputText id="name" class="flex-auto" [(ngModel)]="userModel.phone" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-5">
+        <label for="website" class="font-semibold w-6rem">Website</label>
+        <input pInputText id="website" [(ngModel)]="userModel.website" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="city" class="font-semibold w-6rem">City</label>
+        <input pInputText id="city" [(ngModel)]="userModel.address.city" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="street" class="font-semibold w-6rem">Street</label>
+        <input pInputText id="street" [(ngModel)]="userModel.address.street" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="suite" class="font-semibold w-6rem">Suite</label>
+        <input pInputText id="suite" [(ngModel)]="userModel.address.suite" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="zipcode" class="font-semibold w-6rem">Zip Code</label>
+        <input pInputText id="zipcode" [(ngModel)]="userModel.address.zipcode" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="geolat" class="font-semibold w-6rem">Lat.</label>
+        <input pInputText id="geolat" [(ngModel)]="userModel.address.geo.lat" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="geolng" class="font-semibold w-6rem">Lng.</label>
+        <input pInputText id="geolng" [(ngModel)]="userModel.address.geo.lng" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="company.name" class="font-semibold w-6rem">Company</label>
+        <input pInputText id="company.name" [(ngModel)]="userModel.company.name" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="company.catchPhrase" class="font-semibold w-6rem">Catch. Phrase</label>
+        <input pInputText id="company.catchPhrase" [(ngModel)]="userModel.company.catchPhrase" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="company.bs" class="font-semibold w-6rem">Business Sector</label>
+        <input pInputText id="company.bs" [(ngModel)]="userModel.company.bs" class="flex-auto" autocomplete="off" readonly/>
+    </div>
+</p-dialog>
